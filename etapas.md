@@ -1,6 +1,6 @@
 ### Funcionalidades do Sistema:
 
-1. **Cadastro de Associados:**
+1. **Cadastro de Associados:** 
    - Página para adicionar novos associados, com campos para nome, e-mail, CPF e data de filiação.
 
 2. **Cadastro de Anuidades:**
