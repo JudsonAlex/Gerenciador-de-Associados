@@ -23,7 +23,7 @@
     $arrayActions = array("cadastrar_anuidades" );
     $controller = new anuidadeController();
     $action = !empty($_POST['a']) ? $_POST['a'] : 'listar';
-    echo "action = " . $action . $_POST['a'];
+    //echo "action = " . $action . $_POST['a'];
 
     $controller->{$action}();
 ?>

@@ -24,3 +24,6 @@
 3. Implementar as funcionalidades de cobrança das anuidades e registro de pagamentos.
 4. Desenvolver a lógica para identificar os associados em dia ou em atraso.
 
+
+### coisas a se fazer:
+   - resolver problema do trigger, esta inserindo o associado a uma mesma anuidade varias vezes

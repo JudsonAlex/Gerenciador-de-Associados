@@ -24,17 +24,20 @@ $query_pagamentos = 'CREATE TABLE IF NOT EXISTS pagamentos (
     FOREIGN KEY (anuidade_id) REFERENCES anuidades(id)
 );';
 
-$trigger = "CREATE TRIGGER inserir_pagamento_associado AFTER INSERT ON associados
+$trigger_add_associados= "CREATE TRIGGER IF NOT EXISTS inserir_pagamento_associado AFTER INSERT ON associados
 BEGIN
-    -- Inserir um novo registro na tabela pagamentos
-    INSERT INTO pagamentos (associado_id, anuidade_id)
-    -- Selecionar o último ID inserido na tabela associados
-    SELECT new.id, a.id
-    FROM associados AS new
-    -- Realizar um CROSS JOIN com a tabela anuidades
-    CROSS JOIN anuidades AS a
-    -- Adicionar uma condição para verificar se a anuidade é maior ou igual à data de filiação do associado
-    WHERE a.ano >= strftime('%Y',new.data_filiacao);
+    INSERT INTO pagamentos (associado_id, anuidade_id, valor_pago, juros_pago, data_pagamento)
+    SELECT NEW.id, anuidades.id, NULL, NULL, NULL
+    FROM anuidades
+    WHERE anuidades.ano >= strftime('%Y', NEW.data_filiacao);
+END;";
+
+$trigger_add_anuidades = "CREATE TRIGGER IF NOT EXISTS inserir_pagamento_anuidade AFTER INSERT ON anuidades
+BEGIN
+    INSERT INTO pagamentos (associado_id, anuidade_id, valor_pago, juros_pago, data_pagamento)
+    SELECT associados.id, NEW.id, NULL, NULL, NULL
+    FROM associados
+    WHERE strftime('%Y', associados.data_filiacao) <= (SELECT ano FROM anuidades WHERE id = NEW.id);
 END;";
 
 try{
@@ -42,7 +45,8 @@ try{
     $db->exec($query_associados);
     $db->exec($query_anuidades);
     $db->exec($query_pagamentos);
-    $db->exec($trigger);
+    $db->exec($trigger_add_associados);
+    $db->exec($trigger_add_anuidades);
     echo 'deu certo';
 } catch(PDOException $erro) {
     echo $erro->getMessage();
