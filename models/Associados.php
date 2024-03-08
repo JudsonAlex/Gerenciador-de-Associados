@@ -49,13 +49,16 @@ class Associado extends Database{
                 JOIN anuidades ON pagamentos.anuidade_id = anuidades.id
                 GROUP BY associados.nome
                 HAVING SUM(pagamentos.valor_pago) = SUM(anuidades.valor);");
-                break;
-            default:
-                # code...
+                $result = $sqlListar->fetchAll();
+                return $result;
                 break;
         }
-        $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }");
-        $result = $sqlListar->fetchAll();
+        // $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }");
+        // $result = $sqlListar->fetchAll();
+    }
+
+    function listarTudo(){
+        $this->connection->query("SELECT * FROM associados");
     }
 
 }

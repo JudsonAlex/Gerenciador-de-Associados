@@ -15,22 +15,52 @@
             <label for="em_dia">Em dia</label>
             <button type="submit">Consultar</button>
         </form>
-        <table <?=isset($result) ? "" : "hidden"?>>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Data de filiação</th>
-                    <th>Anos inadimplentes</th>
-                </tr>
-            </thead>
-        <?php foreach($result as $data):?>
-            <tr>
-                <td><?=$data['nome'] ?></td>
-                <td><?=$data['data_filiacao'] ?></td>
-                <td><?=$data['anos_nao_pagos'] ?></td>
-            </tr>
-        <?php endforeach;?>
-        </table>
+
+        <?php switch ($_GET["status"]) {
+            case 'atrasados':?>
+                <table <?=isset($result) ? "" : "hidden"?>>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data de filiação</th>
+                            <th>Anos inadimplentes</th>
+                        </tr>
+                    </thead> 
+                    <?php foreach($result as $data):?>
+                        <tr>
+                            <td><?=$data['nome'] ?></td>
+                            <td><?=$data['data_filiacao'] ?></td>
+                            <td><?=$data['anos_nao_pagos'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                </table>
+                <?php break;
+            case 'quitado':
+                    print_r($result)  ?>
+                <table <?=isset($result) ? "" : "hidden"?>>
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Anos Pagos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($result as $data):?>
+                        <tr>
+                            <td><?=$data['nome'] ?></td>
+                            <td><?=$data['anos_pagos'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+
+            <?php default:
+                # code...
+                break;
+        } ?>
+
+
+
     </div>
     
 </body>

@@ -19,7 +19,9 @@
         </form>
     </div>
     <div class="container">
-
+        <?php
+            require_once("../banco/connect_db.php")
+        ?>
     </div>
 </body>
 </html>
