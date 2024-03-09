@@ -24,9 +24,23 @@ class Anuidade extends Database{
 
 
     }
-    public function listar(){
-        $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }");
+    public function listar($id=null){
+        global $result;
+        if($id){
+            $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }WHERE id = $id");   
+        } else{
+
+            $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }");
+        }
         $result = $sqlListar->fetchAll();
+        return $result;
+    }
+    public function atualizar($id){
+        $sql_update = "UPDATE {$this->tabela} SET valor = ?  WHERE id = ?";
+        $stmt = $this->connection->prepare($sql_update);
+        $stmt->bindValue(1, $this->valor);
+        $stmt->bindValue(2, $id);
+        $stmt->execute();
     }
 
 }

@@ -12,6 +12,18 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.tabela{
+    width: 100%;
+}
+
+.tabela, th, td{
+    border-collapse: collapse; /*define a separação entre as bordar*/
+    padding: 10px;
+    text-align: left;
+}
+th{
+    background-color: lightgray;
+}
 
 h1 {
     text-align: center;

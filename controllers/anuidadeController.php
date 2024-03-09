@@ -7,8 +7,8 @@
         function __construct()
         {
             $this->model = new Anuidade(
-                $_POST['ano'],
-                $_POST['valor']
+                $_REQUEST['ano'],
+                $_REQUEST['valor']
             );
         }
 
@@ -16,13 +16,20 @@
             $this->model->cadastrar();
         }
 
+        function atualizar(){
+            $id = $_REQUEST['id'];
+            $this->model->atualizar($id);
+
+        }
+
         function listar_anuidades(){
-            $this->model->listar();
+
+            $this->model->listar($_REQUEST['id']);
         }
     }
     $arrayActions = array("cadastrar_anuidades" );
     $controller = new anuidadeController();
-    $action = !empty($_POST['a']) ? $_POST['a'] : 'listar';
+    $action = !empty($_REQUEST['a']) ? $_REQUEST['a'] : 'listar_anuidades';
     //echo "action = " . $action . $_POST['a'];
 
     $controller->{$action}();
