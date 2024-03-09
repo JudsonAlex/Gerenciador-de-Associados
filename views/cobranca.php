@@ -18,19 +18,21 @@
 
         <?php switch ($_GET["status"]) {
             case 'atrasados':?>
-                <table class="tabela" <?=isset($result) ? "" : "hidden"?>>
+                <table border="1" class="tabela" <?=isset($result) ? "" : "hidden"?>>
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Data de filiação</th>
-                            <th>Anos inadimplentes</th>
+                            <th>Anuidades</th>
+                            <th>Vlores</th>
+                            <th>Total</th>
                         </tr>
                     </thead> 
                     <?php foreach($result as $data):?>
                         <tr>
-                            <td><?=$data['nome'] ?></td>
-                            <td><?=$data['data_filiacao'] ?></td>
-                            <td><?=$data['anos_nao_pagos'] ?></td>
+                            <td><a><?=$data['nome'] ?></a></td>
+                            <td><?=$data['anos'] ?></td>
+                            <td><?=$data['valores'] ?></td>
+                            <td><?=$data['total'] ?></td>
                         </tr>
                     <?php endforeach;?>
                 </table>
