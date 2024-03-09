@@ -27,7 +27,7 @@ class Anuidade extends Database{
     public function listar($id=null){
         global $result;
         if($id){
-            $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }WHERE id = $id");   
+            $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela } WHERE id = $id");   
         } else{
 
             $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }");

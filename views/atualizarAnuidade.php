@@ -15,7 +15,7 @@
             <input type="hidden" name="id" value="<?=$_REQUEST['id']?>">
             <input type="text" placeholder="Digite o ano" name="ano" value="<?=$_REQUEST['ano']?>">
             <input type="text" placeholder="valor da anuidade" name="valor" value="<?=$_REQUEST['valor']?>">
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Atualizar</button>
         </form>
     </div>
 </body>
