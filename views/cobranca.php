@@ -18,7 +18,7 @@
 
         <?php switch ($_GET["status"]) {
             case 'atrasados':?>
-                <table <?=isset($result) ? "" : "hidden"?>>
+                <table class="tabela" <?=isset($result) ? "" : "hidden"?>>
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -35,9 +35,8 @@
                     <?php endforeach;?>
                 </table>
                 <?php break;
-            case 'quitado':
-                    print_r($result)  ?>
-                <table <?=isset($result) ? "" : "hidden"?>>
+            case 'quitado':?>
+                <table class="tabela" <?=isset($result) ? "" : "hidden"?>>
                     <thead>
                     <tr>
                         <th>Nome</th>

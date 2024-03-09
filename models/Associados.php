@@ -52,14 +52,17 @@ class Associado extends Database{
                 $result = $sqlListar->fetchAll();
                 return $result;
                 break;
+
+            case 'listar_todos':
+                $sqlListar = $this->connection->query("SELECT * FROM associados;");
+                $result = $sqlListar->fetchAll();
+                return $result;
+                break;
         }
         // $sqlListar = $this->connection->query("SELECT * FROM {$this->tabela }");
         // $result = $sqlListar->fetchAll();
     }
 
-    function listarTudo(){
-        $this->connection->query("SELECT * FROM associados");
-    }
 
 }
 ?>

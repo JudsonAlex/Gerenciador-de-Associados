@@ -19,9 +19,32 @@
         </form>
     </div>
     <div class="container">
-        <?php
-            require_once("../banco/connect_db.php")
-        ?>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Data de Filiação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    require_once("../controllers/associadoController.php");
+                    foreach ($result as $key => $value){?>
+                        <tr>
+                            <td><?=$value["nome"]?></td>
+                            <td><?=$value["email"]?></td>
+                            <td><?=$value["cpf"]?></td>
+                            <td><?=$value["data_filiacao"]?></td>
+                        </tr>
+                        
+                    <?php }
+        
+                ?>
+                
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

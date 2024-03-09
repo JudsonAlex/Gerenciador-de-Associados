@@ -1,11 +1,12 @@
 <?php
 
-use function PHPSTORM_META\type;
+
 
     require_once '../models/Associados.php';
 
     class associadoController{
         private $model;
+        
         
         function __construct()
         {
@@ -19,21 +20,24 @@ use function PHPSTORM_META\type;
         }
         
         function cadastrar_associados(){
-            $this->model->cadastrar();       
+            $this->model->cadastrar();
+            header('location: ../views/cadastro_associados.php?status=listar_todos');
             
         }
 
         function listar_associados(){
+            global $result;
             $status = $_GET['status'];
             $result = $this->model->listar($status);
-        
-            require_once('../views/cobranca.php');
+            if ($status !== 'listar_todos' ){
+                require_once('../views/cobranca.php');
+            }
             return $result;
         }
     }
     $arrayActions = array("cadastrar_associados" );
     $controller = new associadoController();
-    $action = !empty($_POST['a']) ? $_POST['a'] : 'listar_associados';
+    $action = !empty($_REQUEST['a']) ? $_REQUEST['a'] : 'listar_associados';
     //echo "action = " . $action . $_POST['a'];
 
     $controller->{$action}();
