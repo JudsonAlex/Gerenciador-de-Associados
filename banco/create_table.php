@@ -20,8 +20,8 @@ $query_pagamentos = 'CREATE TABLE IF NOT EXISTS pagamentos (
     valor_pago DECIMAL(10, 2),
     juros_pago DECIMAL(10, 2),
     data_pagamento DATE,
-    FOREIGN KEY (associado_id) REFERENCES associados(id),
-    FOREIGN KEY (anuidade_id) REFERENCES anuidades(id)
+    FOREIGN KEY (associado_id) REFERENCES associados(id) ON DELETE CASCADE,
+    FOREIGN KEY (anuidade_id) REFERENCES anuidades(id) ON DELETE CASCADE
 );';
 
 $trigger_add_associados= "CREATE TRIGGER IF NOT EXISTS inserir_pagamento_associado AFTER INSERT ON associados
