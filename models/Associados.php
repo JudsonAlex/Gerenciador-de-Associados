@@ -55,6 +55,7 @@ class Associado extends Database{
                     pagamentos p ON a.id = p.associado_id
                 LEFT JOIN 
                     anuidades an ON p.anuidade_id = an.id
+                WHERE p.data_pagamento IS NULL
                 GROUP BY 
                     a.id, a.nome;
                 ");

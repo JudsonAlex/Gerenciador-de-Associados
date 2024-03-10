@@ -16,6 +16,12 @@
             <button type="submit">Consultar</button>
         </form>
 
+
+
+
+    </div>
+
+    <div  class="container" <?=isset($_GET['status'])? "" : "hidden" ?>>
         <?php switch ($_GET["status"]) {
             case 'atrasados':?>
                 <table border="1" class="tabela" <?=isset($result) ? "" : "hidden"?>>
@@ -29,7 +35,7 @@
                     </thead> 
                     <?php foreach($result as $data):?>
                         <tr>
-                            <td><a><?=$data['nome'] ?></a></td>
+                            <td><a href="../controllers/pagamentoController.php?associado_id=<?=$data['associado_id']?>"> <?=$data['nome'] ?></a></td>
                             <td><?=$data['anos'] ?></td>
                             <td><?=$data['valores'] ?></td>
                             <td><?=$data['total'] ?></td>
@@ -60,9 +66,8 @@
                 break;
         } ?>
 
-
-
     </div>
+    <div class="container"><a href="javascript: history.go(-1)">Voltar</a></div>
     
 </body>
 </html>

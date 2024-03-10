@@ -14,11 +14,13 @@
 
         function cadastrar_anuidades(){
             $this->model->cadastrar();
+            header('location: ../views/cadastro_anuidade.php');
         }
 
         function atualizar(){
             $id = $_REQUEST['id'];
             $this->model->atualizar($id);
+            header('location: ../views/cadastro_anuidade.php');
 
         }
 

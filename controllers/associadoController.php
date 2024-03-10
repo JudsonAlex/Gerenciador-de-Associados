@@ -30,7 +30,8 @@
             $status = $_GET['status'];
             $result = $this->model->listar($status);
             if ($status !== 'listar_todos' ){
-                require_once('../views/cobranca.php');
+            //    header('location: ../views/cobranca.php');
+            require_once('../views/cobranca.php');
             }
             return $result;
         }

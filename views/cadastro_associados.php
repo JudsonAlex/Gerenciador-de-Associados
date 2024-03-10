@@ -46,5 +46,6 @@
             </tbody>
         </table>
     </div>
+    <div class="container"><a href="javascript: history.go(-1)">Voltar</a></div>
 </body>
 </html>
