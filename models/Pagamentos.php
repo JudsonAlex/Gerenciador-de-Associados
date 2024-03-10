@@ -45,7 +45,8 @@
             INNER JOIN 
                 anuidades an ON p.anuidade_id = an.id
             WHERE 
-                a.id = ? and strftime('%Y', a.data_filiacao) <= strftime('%Y', date('now')) AND p.data_pagamento IS NULL ");
+                a.id = ? and strftime('%Y', a.data_filiacao) <= strftime('%Y', date('now')) AND p.data_pagamento IS NULL
+                ORDER BY an.ano ");
             $stmt->bindValue(1, $associado_id); 
             $stmt->execute();
             $result = $stmt->fetchAll();
