@@ -9,7 +9,7 @@ $ git clone https://github.com/JudsonAlex/Gerenciador-de-Associados.git
 ```
 $ sudo apt-get install php-sqlite
 ```
-#### para uma instalação mais precisa, pode instalar a dependencia ndencia específica para a versão de PHP instalada na sua máquina.
+#### para uma instalação mais precisa, pode instalar a dependencia específica para a versão de PHP instalada na sua máquina.
 
 
 - por exemplo:
