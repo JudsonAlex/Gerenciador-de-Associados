@@ -47,7 +47,7 @@ try{
     $db->exec($query_pagamentos);
     $db->exec($trigger_add_associados);
     $db->exec($trigger_add_anuidades);
-    echo 'deu certo';
+    echo 'Banco criado com sucesso!'. PHP_EOL;
 } catch(PDOException $erro) {
     echo $erro->getMessage();
 }

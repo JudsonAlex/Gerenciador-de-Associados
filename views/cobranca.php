@@ -29,7 +29,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Anuidades</th>
-                            <th>Vlores</th>
+                            <th>Valores</th>
                             <th>Total</th>
                         </tr>
                     </thead> 

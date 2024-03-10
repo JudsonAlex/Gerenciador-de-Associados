@@ -58,7 +58,7 @@ class Associado extends Database{
                 JOIN pagamentos ON associados.id = pagamentos.associado_id
                 JOIN anuidades ON pagamentos.anuidade_id = anuidades.id
                 GROUP BY associados.nome
-                HAVING SUM(pagamentos.valor_pago) = SUM(anuidades.valor);");
+                HAVING SUM(pagamentos.valor_pago) >= SUM(anuidades.valor);");
                 $result = $sqlListar->fetchAll();
                 return $result;
                 break;
